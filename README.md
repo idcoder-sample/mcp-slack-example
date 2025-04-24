@@ -6,6 +6,30 @@ This Python script acts as an integration between:
 - OpenAI's GPT-4 for ticket classification and summarization
 - A Slack bot via Model Context Protocol (MCP) to post messages into the correct Slack channel
 
+> ⚠️ **Disclaimer:**  
+> This is a basic example demonstrating how to integrate Slack with the MCP server.
+
+## Available Formats
+
+This example is provided in two formats:
+- **Python script (`.py`)**
+- **Jupyter Notebook (`.ipynb`)**
+
+Choose the format that best suits your workflow (e.g., local development or use in Jupyter/Google Colab), and download the respective file.
+
+## Prerequisites
+
+Before you begin, make sure you have the following set up:
+
+- ✅ A **Slack account** and a dedicated **Slack channel**
+- ✅ An **OpenAI GPT account**
+
+### Slack Setup Instructions
+
+To set up your Slack environment, follow the instructions provided here:  
+👉 [Slack Integration Setup Guide](https://github.com/modelcontextprotocol/servers/tree/main/src/slack)
+
+
 ### Purpose of This Application
 The goal of this application is to automate support ticket handling. It simplifies operations by:
 1. Understanding support issues using AI
