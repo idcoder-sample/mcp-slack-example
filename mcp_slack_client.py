@@ -113,12 +113,12 @@ class MCPSlackClient:
 
                 Return the result in the following format (no explanation):
 
-                {{
-                  "raw_ticket_message": "...",
-                  "payment_channel": "...",
-                  "package_detail": "...",
-                  "timestamp": "..."
-                }}
+                [ATTENTION] NEW TICKET INCOMING
+                Raw Ticket Message: ...
+                Payment Channel: ...
+                Package Detail: ...
+                Timestamp: ...
+                
                 """
             }]
             response = self.client.chat.completions.create(model="gpt-4", messages=summarizationQuery)
