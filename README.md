@@ -29,7 +29,7 @@ Before you begin, make sure you have the following set up:
 To set up your Slack environment, follow the instructions provided here:  
 👉 [Slack Integration Setup Guide](https://github.com/modelcontextprotocol/servers/tree/main/src/slack)
 
-Make sure to add you slack app into your desired channel.
+Make sure to add your slack app into your desired channel.
 ![AddApp1](doc/add_app_to_channel_1.png)
 ![AddApp2](doc/add_app_to_channel_2.png)
 ![AddApp3](doc/app_added_to_channel.png)
