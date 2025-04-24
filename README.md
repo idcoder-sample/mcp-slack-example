@@ -32,7 +32,7 @@ To set up your Slack environment, follow the instructions provided here:
 Make sure to add you slack app into your desired channel.
 ![AddApp1](doc/add_app_to_channel_1.png)
 ![AddApp2](doc/add_app_to_channel_2.png)
-![AddApp3](doc/add_app_to_channel_3.png)
+![AddApp3](doc/app_added_to_channel.png)
 
 ### Purpose of This Application
 The goal of this application is to automate support ticket handling. It simplifies operations by:
