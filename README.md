@@ -54,7 +54,7 @@ The goal of this application is to automate support ticket handling. It simplifi
 ### Installation
 1. Install Python packages:
 ```bash
-pip install openai
+pip install mcp openai
 ```
 
 2. Prepare `config.json` file with the following structure:
