@@ -1,6 +1,23 @@
 
 # MCP Slack Example
 
+## Table of Contents
+- [Overview](#overview)
+- [Purpose of This Application](#purpose-of-this-application)
+- [Getting Started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+- [Script Flow (Simplified)](#script-flow-simplified)
+- [Main Components](#main-components)
+  - [MCPSlackClient](#mcpslackclient)
+  - [summarize_ticket()](#summarize_ticket)
+  - [classify_alert()](#classify_alert)
+  - [post_message()](#post_message)
+- [Usage Example](#usage-example)
+- [Limitations / Known Issues](#limitations--known-issues)
+- [Coming Up Next](#coming-up-next)
+
+
 ## Overview
 This Python script acts as an integration between:
 - OpenAI's GPT-4 for ticket Classification and Summarization/Extraction
