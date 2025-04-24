@@ -29,6 +29,10 @@ Before you begin, make sure you have the following set up:
 To set up your Slack environment, follow the instructions provided here:  
 👉 [Slack Integration Setup Guide](https://github.com/modelcontextprotocol/servers/tree/main/src/slack)
 
+Make sure to add you slack app into your desired channel.
+![AddApp1](doc/add_app_to_channel_1.png)
+![AddApp2](doc/add_app_to_channel_2.png)
+![AddApp3](doc/add_app_to_channel_3.png)
 
 ### Purpose of This Application
 The goal of this application is to automate support ticket handling. It simplifies operations by:
@@ -119,8 +123,10 @@ python mcp_slack_client.py
 ```
 Follow the prompts:
 1. Enter the ticket message
-2. Let GPT-4 summarize and classify it
-3. The script will post to the right Slack channel
+   ![RunningExample](doc/notebook_running_example.png)
+3. Let GPT-4 summarize and classify it
+4. The script will post to the right Slack channel
+   ![SummaryExample](doc/summary_successfully_posted.png)
 
 ---
 
