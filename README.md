@@ -3,7 +3,7 @@
 
 ## Overview
 This Python script acts as an integration between:
-- OpenAI's GPT-4 for ticket classification and summarization
+- OpenAI's GPT-4 for ticket Classification and Summarization/Extraction
 - A Slack bot via Model Context Protocol (MCP) to post messages into the correct Slack channel
 
 > ⚠️ **Disclaimer:**  
@@ -135,15 +135,13 @@ Follow the prompts:
 - No retry or backoff logic for network/API failures.
 - Slack API or MCP tool failures aren't deeply handled.
 - Requires internet and valid API credentials.
+- Customize the channel name and classification to suit your specific needs.
+- For production use, a more comprehensive scenario handling mechanism is required. This example is intended for demonstration purposes only.
+- Consider integrating ticket-related messages directly with your existing ticketing or logging systems (e.g., Grafana, Remedy, or Jira).
 
 ---
 
 ## Coming Up Next
-- Add unit tests with mock GPT responses
-- Support other messaging platforms (e.g., Teams, Discord)
-- Add logging for production use
-
----
-
-## Questions?
-Ping the project maintainer or open an issue in your team repo.
+- Alerts are triggered directly from Grafana (integrated as an input source for ticket generation).
+- Integrates with the file system logs to fetch relevant logs based on the detected scenario  
+  (e.g., payment-related issues will automatically retrieve logs from the payment service).
