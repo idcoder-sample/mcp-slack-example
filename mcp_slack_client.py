@@ -51,7 +51,6 @@ class MCPSlackClient:
         # Print the list of tools supported by the server
         response = await self.session.list_tools()
         tools = response.tools
-        print("\nConnected to server with tools:", [tool.name for tool in tools])
 
     # Use GPT to classify the type of issue described in the ticket
     async def classify_alert(self, ticket_message):
@@ -83,7 +82,6 @@ class MCPSlackClient:
             response = self.client.chat.completions.create(model="gpt-4", messages=classificationQuery)
             classification = response.choices[0].message.content.strip()
 
-            print(classification)
             return classification
 
         except Exception as e:
@@ -125,8 +123,6 @@ class MCPSlackClient:
             }]
             response = self.client.chat.completions.create(model="gpt-4", messages=summarizationQuery)
             summary = response.choices[0].message.content.strip()
-
-            print(summary)
             return summary
 
         except Exception as e:
@@ -190,7 +186,7 @@ async def main():
 
     try:
         await client.connect_to_server()  # Connect to MCP Slack server
-        
+        print("")
         ticket_message = input("Input Ticket Details: ").strip()
 
         summary = await client.summarize_ticket(ticket_message)  # Step 1: Summarize the ticket
