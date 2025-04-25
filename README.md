@@ -3,17 +3,20 @@
 
 ## Table of Contents
 - [Overview](#overview)
-- [Purpose of This Application](#purpose-of-this-application)
+  - [Available Formats](#available-formats)
+  - [Purpose of This Application](#purpose-of-this-application)
+- [Prerequisites](#prerequisites)
+  - [Slack Setup Instructions](#slack-setup-instructions)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Installation](#installation)
+  - [Usage Example](#usage-example)
 - [Script Flow (Simplified)](#script-flow-simplified)
 - [Main Components](#main-components)
   - [MCPSlackClient](#mcpslackclient)
   - [summarize_ticket()](#summarize_ticket)
   - [classify_alert()](#classify_alert)
   - [post_message()](#post_message)
-- [Usage Example](#usage-example)
 - [Limitations / Known Issues](#limitations--known-issues)
 - [Coming Up Next](#coming-up-next)
 
@@ -26,13 +29,19 @@ This Python script acts as an integration between:
 > ⚠️ **Disclaimer:**  
 > This is a basic example demonstrating how to integrate Slack with the MCP server.
 
-## Available Formats
+### Available Formats
 
 This example is provided in two formats:
 - **Python script (`.py`)**
 - **Jupyter Notebook (`.ipynb`)**
 
 Choose the format that best suits your workflow (e.g., local development or use in Jupyter/Google Colab), and download the respective file.
+
+### Purpose of This Application
+The goal of this application is to automate support ticket handling. It simplifies operations by:
+1. Understanding support issues using AI
+2. Classifying them accurately
+3. Posting structured information to relevant Slack channels for quicker resolution
 
 ## Prerequisites
 
@@ -46,16 +55,10 @@ Before you begin, make sure you have the following set up:
 To set up your Slack environment, follow the instructions provided here:  
 👉 [Slack Integration Setup Guide](https://github.com/modelcontextprotocol/servers/tree/main/src/slack)
 
-Make sure to add your slack app into your desired channel.
+Make sure to add your slack app into your desired channel. In my case, i named my slack-app as TicketClassification and added to 5 channel.
 ![AddApp1](doc/add_app_to_channel_1.png)
 ![AddApp2](doc/add_app_to_channel_2.png)
 ![AddApp3](doc/app_added_to_channel.png)
-
-### Purpose of This Application
-The goal of this application is to automate support ticket handling. It simplifies operations by:
-1. Understanding support issues using AI
-2. Classifying them accurately
-3. Posting structured information to relevant Slack channels for quicker resolution
 
 ---
 
@@ -87,6 +90,17 @@ pip install mcp openai
   "SLACK_CHANNELID_ALL": "Cxxxx99"
 }
 ```
+
+### Usage Example
+```bash
+python mcp_slack_client.py
+```
+Follow the prompts:
+1. Enter the ticket message
+   ![RunningExample](doc/notebook_running_example.png)
+3. Let GPT-4 summarize and classify it
+4. The script will post to the right Slack channel
+   ![SummaryExample](doc/summary_successfully_posted.png)
 
 ---
 
@@ -134,24 +148,8 @@ Selects Slack channel based on classification and posts the summary.
 
 ---
 
-## Usage Example
-```bash
-python mcp_slack_client.py
-```
-Follow the prompts:
-1. Enter the ticket message
-   ![RunningExample](doc/notebook_running_example.png)
-3. Let GPT-4 summarize and classify it
-4. The script will post to the right Slack channel
-   ![SummaryExample](doc/summary_successfully_posted.png)
-
----
-
 ## Limitations / Known Issues
 - The classification depends on GPT-4's interpretation, which may vary.
-- No retry or backoff logic for network/API failures.
-- Slack API or MCP tool failures aren't deeply handled.
-- Requires internet and valid API credentials.
 - Customize the channel name and classification to suit your specific needs.
 - For production use, a more comprehensive scenario handling mechanism is required. This example is intended for demonstration purposes only.
 - Consider integrating ticket-related messages directly with your existing ticketing or logging systems (e.g., Grafana, Remedy, or Jira).
