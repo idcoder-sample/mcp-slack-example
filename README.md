@@ -77,7 +77,7 @@ Make sure to add your slack app into your desired channel. In my case, i named m
 pip install mcp openai
 ```
 
-2. Prepare `config.json` file with the following structure:
+2. Prepare `config.json` file with the following structure (If Slack channel is configured differently, please note the next step):
 ```json
 {
   "OPENAI_API_KEY": "your-api-key",
@@ -89,6 +89,61 @@ pip install mcp openai
   "SLACK_CHANNELID_SERVICEPROVISIONING": "Cxxxx04",
   "SLACK_CHANNELID_ALL": "Cxxxx99"
 }
+```
+
+3. (Optional) Channel options was hardcoded, so if you want to change the channel name, you can configure in the JSON file above, and also change some of codes to meet you expectation:
+
+On the Initialization
+```python
+# Extract values from the config dictionary
+OPENAI_API_KEY = config["OPENAI_API_KEY"]
+SLACK_BOT_TOKEN = config["SLACK_BOT_TOKEN"]
+SLACK_TEAM_ID = config["SLACK_TEAM_ID"]
+SLACK_CHANNELID_CHANNELMOBILE = config["SLACK_CHANNELID_CHANNELMOBILE"]
+SLACK_CHANNELID_CHANNELWEB = config["SLACK_CHANNELID_CHANNELWEB"]
+SLACK_CHANNELID_SERVICEPAYMENT = config["SLACK_CHANNELID_SERVICEPAYMENT"]
+SLACK_CHANNELID_SERVICEPROVISIONING = config["SLACK_CHANNELID_SERVICEPROVISIONING"]
+SLACK_CHANNELID_ALL = config["SLACK_CHANNELID_ALL"]
+```
+On the prompt
+```python
+classificationQuery = [{
+      "role": "user",
+      "content": f"""You are a customer support classifier assistant.
+      Your task is to classify the following ticket message into one of these five categories:
+
+      Categories:
+      1. channel-mobile – Issues related to mobile applications or mobile platforms.
+      2. channel-web – Issues related to websites or web interfaces.
+      3. service-payment – Issues related to billing, payment transactions, or refunds.
+      4. service-provisioning – Issues related to service activation, account setup, or access provisioning.
+      5. unknown – If the issue doesn't clearly fit any of the above categories.
+
+      Instructions:
+      - Return only the category name, do not change the categories name provided above
+      - Be as precise as possible. Do not guess if the message is unclear — use "unknown".
+
+      ---
+
+      Ticket message:
+      "{ticket_message}"
+
+      Category:"""
+  }]
+```
+On the post_message
+```python
+# Choose Slack channel based on classification result
+if classification == "channel-mobile":
+    channel_id = SLACK_CHANNELID_CHANNELMOBILE
+elif classification == "channel-web":
+    channel_id = SLACK_CHANNELID_CHANNELWEB
+elif classification == "service-payment":
+    channel_id = SLACK_CHANNELID_SERVICEPAYMENT
+elif classification == "service-provisioning":
+    channel_id = SLACK_CHANNELID_SERVICEPROVISIONING
+else:
+    channel_id = SLACK_CHANNELID_ALL  # Fallback/default channel
 ```
 
 ### Usage Example
